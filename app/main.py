@@ -8,9 +8,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
+    if message.content == '!^' or message.content == '^':
+        # msg = 'Hello {0.author.mention}'.format(message)
+        await message.channel.send('I agree!')
+
+    if message.content == '!resetName':
+        print('Attempting to reset my name...')
+        await message.guild.get_member(292810126967046154).edit(nick=None)
 
 @client.event
 async def on_ready():
@@ -19,4 +23,8 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('')
+# Get token and start bot
+with open('lib/secret.txt', 'r') as f:
+    secret = f.readline()
+
+client.run(secret)
