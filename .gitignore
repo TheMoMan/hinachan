@@ -5,5 +5,8 @@
 prod.yml
 dev.yml
 
+# Python generated files
+__pycache__
+
 # Sandbox
 test.py
