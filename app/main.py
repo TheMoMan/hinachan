@@ -5,7 +5,7 @@ import random
 import utils
 from discord.ext import commands
 
-DEV_MODE = True
+DEV_MODE = False
 
 with open('configs/dev.yml' if DEV_MODE else 'configs/prod.yml', 'r') as f:
     config = yaml.safe_load(f)
