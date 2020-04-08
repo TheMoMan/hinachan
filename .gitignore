@@ -1,2 +1,9 @@
+# IDE files
 /.vscode
-secret.txt
+
+# Secrets
+prod.yml
+dev.yml
+
+# Sandbox
+test.py
