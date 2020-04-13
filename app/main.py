@@ -3,23 +3,24 @@ import discord
 import os
 import random
 import utils
+from embeds import helpEmbed
 from discord.ext import commands
 
-DEV_MODE = False
+DEV_MODE = True
 
 with open('configs/dev.yml' if DEV_MODE else 'configs/prod.yml', 'r') as f:
     config = yaml.safe_load(f)
 
 # PREFIX = config['prefix']
 
-client = commands.Bot(command_prefix = config['prefix'])
+client = commands.Bot(command_prefix=config['prefix'], help_command=None)
 
 
 # Functionality
 
 # Owner commands
 @client.command()
-async def setnick(ctx: discord.Message, nickname: str = None):
+async def setnick(ctx: discord.Message, nickname: str=None):
     print('setnick called')
 
     if ctx.author.id == config['ownerId']:
@@ -27,6 +28,18 @@ async def setnick(ctx: discord.Message, nickname: str = None):
         await ctx.guild.get_member(config['userId']).edit(nick=nickname)
 
 # Public commands
+@client.command()
+async def help(ctx:discord.Message, category: str=None):
+    print('help called')
+
+    def switchHelp(category):
+        return {
+            'images': helpEmbed.getImages(),
+            'utilities': helpEmbed.getUtils(),
+        }.get(category, helpEmbed.getMain())
+
+    await ctx.channel.send(embed=switchHelp(category))
+
 @client.command(name='911')
 async def nineoneone(ctx: discord.Message):
     print('911 called')
@@ -42,7 +55,7 @@ async def finger(ctx: discord.Message):
     file = utils.pickRandomFile('finger')
 
     await ctx.channel.send(
-        file = discord.File(file)
+        file=discord.File(file)
     )
 
 @client.command()
@@ -53,7 +66,7 @@ async def simon(ctx: discord.Message):
         file = utils.pickRandomFile('simon')
 
         await ctx.channel.send(
-            file = discord.File(file)
+            file=discord.File(file)
         )
 
 @client.command()
@@ -63,17 +76,17 @@ async def muppet(ctx: discord.Message):
     file = 'lib/muppet.jpg'
 
     await ctx.channel.send(
-        file = discord.File(file)
+        file=discord.File(file)
     )
 
-@client.command(aliases=['+1'])
+@client.command(aliases=['+1', '👍'])
 async def thumbsup(ctx: discord.Message):
     print('thumbsup called')
 
     file = 'lib/thumbsup.jpg'
 
     await ctx.channel.send(
-        file = discord.File(file)
+        file=discord.File(file)
     )
 
 # Text events
@@ -87,10 +100,6 @@ async def on_message(message: discord.Message):
         print('!^ called')
 
         await message.channel.send('I agree!')
-
-    # if message.content == '!resetName':
-    #     print('Attempting to reset my name...')
-    #     await message.guild.get_member(config['userId']).edit(nick=None)
 
     await client.process_commands(message)
 
