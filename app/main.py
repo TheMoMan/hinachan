@@ -11,8 +11,6 @@ DEV_MODE = True
 with open('configs/dev.yml' if DEV_MODE else 'configs/prod.yml', 'r') as f:
     config = yaml.safe_load(f)
 
-# PREFIX = config['prefix']
-
 client = commands.Bot(command_prefix=config['prefix'], help_command=None)
 
 
@@ -100,6 +98,22 @@ async def on_message(message: discord.Message):
         print('!^ called')
 
         await message.channel.send('I agree!')
+
+        return
+
+    if message.content == '👍':
+        print('👍 called')
+
+        await thumbsup(message)
+
+        return
+
+    if message.content == '🖕':
+        print('🖕 called')
+
+        await finger(message)
+
+        return
 
     await client.process_commands(message)
 

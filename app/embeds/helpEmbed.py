@@ -17,7 +17,7 @@ def getMain():
     images = ['finger', 'muppet', 'thumbsup', 'simon']
     HELP_EMBED.add_field(name=':frame_photo: Images', value=formatCommandsForMain(images))
 
-    responses = ['^']
+    responses = ['^', '👍', '🖕']
     HELP_EMBED.add_field(name=':speech_left: Responses', value=formatCommandsForMain(responses))
 
     utils = ['911']
@@ -42,7 +42,8 @@ def getResponses():
     HELP_EMBED.description = 'Hina-chan responses to regular chat. Command prefix isn\'t required to trigger these.'
 
     HELP_EMBED.add_field(name='^', value='I agree!')
-    # HELP_EMBED.add_field(name='👍', value='ビッ')
+    HELP_EMBED.add_field(name='👍', value='ビッ')
+    HELP_EMBED.add_field(name='🖕', value='Flip the bird.')
 
 def getUtils():
     HELP_EMBED = getBase()
