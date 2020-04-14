@@ -3,9 +3,8 @@ from app.services import utilService
 from discord.ext import commands
 
 class UtilHandler(commands.Cog):
-    def __init__(self, client, config):
-        self.client = client
-        self.service = utilService.UtilService(config)
+    def __init__(self, client):
+        self.service = utilService.UtilService()
 
     @commands.command()
     async def help(self, ctx: discord.Message, category: str=None):

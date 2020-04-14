@@ -2,9 +2,6 @@ import discord
 import app.utils as utils
 
 class ImageService():
-    def __init__(self, config):
-        self.config = config
-
     async def sendFinger(self, ctx: discord.Message):
         print('sendFinger called')
 

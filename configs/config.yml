@@ -1,5 +1,0 @@
-secret: secret_token
-userId: bot_user_id
-ownerId: owner_user_id
-ownerTag: owner_user_tag
-prefix: command_prefix

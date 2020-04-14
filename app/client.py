@@ -1,4 +1,3 @@
-import yaml
 import discord
 import os
 import random
@@ -7,14 +6,11 @@ from app.handlers import *
 from app.embeds import helpEmbed
 from discord.ext import commands
 
-DEV_MODE = True
+prefix = os.environ['PREFIX']
 
-with open('configs/dev.yml' if DEV_MODE else 'configs/prod.yml', 'r') as f:
-    config = yaml.safe_load(f)
+client = commands.Bot(command_prefix=prefix, help_command=None)
 
-client = commands.Bot(command_prefix=config['prefix'], help_command=None)
-
-response = responseHandler.ResponseHandler(client, config)
+response = responseHandler.ResponseHandler(client)
 
 @client.event
 async def on_message(message: discord.Message):
@@ -30,9 +26,9 @@ async def on_ready():
     print('------')
 
 
-client.add_cog(imageHandler.ImageHandler(client, config))
-client.add_cog(masterHandler.MasterHandler(client, config))
-client.add_cog(utilHandler.UtilHandler(client, config))
+client.add_cog(imageHandler.ImageHandler(client))
+client.add_cog(masterHandler.MasterHandler(client))
+client.add_cog(utilHandler.UtilHandler(client))
 
-with open(config['secret'], 'r') as f:
+with open(os.environ['SECRET'], 'r') as f:
     client.run(f.readline())

@@ -3,9 +3,9 @@ from app.services import imageService
 from discord.ext import commands
 
 class ImageHandler(commands.Cog):
-    def __init__(self, client, config):
+    def __init__(self, client):
         self.client = client
-        self.service = imageService.ImageService(config)
+        self.service = imageService.ImageService()
 
     @commands.command()
     async def finger(self, ctx: discord.Message):

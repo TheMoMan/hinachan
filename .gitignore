@@ -5,6 +5,7 @@
 prod.yml
 dev.yml
 *.secret
+*Config.py
 
 # Python generated files
 __pycache__

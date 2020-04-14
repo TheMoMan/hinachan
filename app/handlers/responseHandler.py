@@ -2,10 +2,10 @@ import discord
 from app.services import imageService, textService
 
 class ResponseHandler():
-    def __init__(self, client, config):
+    def __init__(self, client):
         self.client = client
-        self.imageService = imageService.ImageService(config)
-        self.textService = textService.TextService(config)
+        self.imageService = imageService.ImageService()
+        self.textService = textService.TextService()
 
     async def handle(self, ctx: discord.Message):
         if ctx.author == self.client.user:

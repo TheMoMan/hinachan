@@ -2,9 +2,6 @@ import discord
 from app.embeds import helpEmbed
 
 class UtilService():
-    def __init__(self, config):
-        self.config = config
-
     async def sendHelp(self, ctx: discord.Message, category: str=None):
         print('sendHelp called')
 
