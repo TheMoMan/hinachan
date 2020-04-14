@@ -8,15 +8,19 @@ class UtilService():
     async def sendHelp(self, ctx: discord.Message, category: str=None):
         print('sendHelp called')
 
-        
-        def switchHelp(category):
-            return {
-                'images': helpEmbed.getImages(),
-                'responses': helpEmbed.getResponses(),
-                'utilities': helpEmbed.getUtils(),
-            }.get(category, helpEmbed.getMain())
+        if not category:
+            embed = helpEmbed.getMain()
 
-        await ctx.channel.send(embed=switchHelp(category))
+        elif category.lower() == 'images':
+            embed = helpEmbed.getImages()
+        
+        elif category.lower() == 'responses':
+            embed = helpEmbed.getResponses()
+
+        elif category.lower() == 'utilities':
+            embed = helpEmbed.getUtils()
+
+        await ctx.channel.send(embed=embed)
 
         return True
 

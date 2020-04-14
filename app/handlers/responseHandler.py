@@ -16,10 +16,10 @@ class ResponseHandler():
         if content in ['!^', '^']:
             return await self.textService.sendIAgree(ctx)
 
-        if content == '👍':
+        elif content == '👍':
             return await self.imageService.sendThumbsUp(ctx)
 
-        if content == '🖕':
+        elif content == '🖕':
             return await self.imageService.sendFinger(ctx)
 
         return False
