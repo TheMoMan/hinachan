@@ -6,7 +6,7 @@ class UtilService():
         self.config = config
 
     async def sendHelp(self, ctx: discord.Message, category: str=None):
-        print('help called')
+        print('sendHelp called')
 
         def switchHelp(category):
             return {
@@ -20,7 +20,7 @@ class UtilService():
         return True
 
     async def sendNineOneOne(self, ctx: discord.Message):
-        print('911 called')
+        print('sendNineOneOne called')
 
         with open('lib/911.txt', 'r', encoding='utf-8') as f:
             await ctx.channel.send(f.read())

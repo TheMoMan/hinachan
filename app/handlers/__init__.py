@@ -1,1 +1,1 @@
-__all__ = ['imageHandler', 'masterHandler', 'utilHandler']
+__all__ = ['imageHandler', 'masterHandler', 'responseHandler', 'utilHandler']

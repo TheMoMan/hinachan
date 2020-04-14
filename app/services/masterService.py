@@ -5,7 +5,7 @@ class MasterService():
         self.config = config
 
     async def setGuildNick(self, ctx: discord.Message, nickname: str=None):
-        print('setNick called')
+        print('setGuildNick called')
 
         if ctx.author.id == self.config['ownerId']:
             print('Attempt to set my nickname to {}'.format(nickname))

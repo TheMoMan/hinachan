@@ -1,1 +1,1 @@
-__all__ = ['imageService', 'masterHandler', 'utilService']
+__all__ = ['imageService', 'masterHandler', 'textService', 'utilService']

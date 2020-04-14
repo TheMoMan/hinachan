@@ -6,7 +6,7 @@ class ImageService():
         self.config = config
 
     async def sendFinger(self, ctx: discord.Message):
-        print('finger called')
+        print('sendFinger called')
 
         file = utils.pickRandomFile('finger')
 
@@ -17,7 +17,7 @@ class ImageService():
         return True
 
     async def sendSimon(self, ctx: discord.Message):
-        print('simon called')
+        print('sendSimon called')
 
         if(ctx.guild.get_member(109626488076111872) != None):
             file = utils.pickRandomFile('simon')
@@ -29,7 +29,7 @@ class ImageService():
         return True
 
     async def sendMuppet(self, ctx: discord.Message):
-        print('muppet called')
+        print('sendMuppet called')
 
         file = 'lib/muppet.jpg'
 
@@ -40,7 +40,7 @@ class ImageService():
         return True
 
     async def sendThumbsUp(self, ctx: discord.Message):
-        print('thumbsup called')
+        print('sendThumbsUp called')
 
         file = 'lib/thumbsup.jpg'
 

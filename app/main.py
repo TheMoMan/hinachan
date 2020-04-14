@@ -14,39 +14,14 @@ with open('configs/dev.yml' if DEV_MODE else 'configs/prod.yml', 'r') as f:
 
 client = commands.Bot(command_prefix=config['prefix'], help_command=None)
 
+response = responseHandler.ResponseHandler(client, config)
 
-# Text events
 @client.event
 async def on_message(message: discord.Message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
-
-    if message.content == '!^' or message.content == '^':
-        print('!^ called')
-
-        await message.channel.send('I agree!')
-
-        return
-
-    if message.content == '👍':
-        print('👍 called')
-
-        await thumbsup(message)
-
-        return
-
-    if message.content == '🖕':
-        print('🖕 called')
-
-        await finger(message)
-
+    if(await response.handle(message)):
         return
 
     await client.process_commands(message)
-
-
-# Initialisation
 
 @client.event
 async def on_ready():
