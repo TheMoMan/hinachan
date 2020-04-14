@@ -1,5 +1,5 @@
 import discord
-from services import utilService
+from app.services import utilService
 from discord.ext import commands
 
 class UtilHandler(commands.Cog):

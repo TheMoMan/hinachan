@@ -1,5 +1,5 @@
 import discord
-import utils
+import app.utils as utils
 
 class ImageService():
     def __init__(self, config):

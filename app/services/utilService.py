@@ -1,5 +1,5 @@
 import discord
-from embeds import helpEmbed
+from app.embeds import helpEmbed
 
 class UtilService():
     def __init__(self, config):
@@ -8,6 +8,7 @@ class UtilService():
     async def sendHelp(self, ctx: discord.Message, category: str=None):
         print('sendHelp called')
 
+        
         def switchHelp(category):
             return {
                 'images': helpEmbed.getImages(),

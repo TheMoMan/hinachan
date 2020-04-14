@@ -1,5 +1,5 @@
 import discord
-from services import imageService, textService
+from app.services import imageService, textService
 
 class ResponseHandler():
     def __init__(self, client, config):

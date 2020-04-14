@@ -1,5 +1,5 @@
 import discord
-from services import masterService
+from app.services import masterService
 from discord.ext import commands
 
 class MasterHandler(commands.Cog):

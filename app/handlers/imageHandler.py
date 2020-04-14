@@ -1,5 +1,5 @@
 import discord
-from services import imageService
+from app.services import imageService
 from discord.ext import commands
 
 class ImageHandler(commands.Cog):

@@ -2,9 +2,9 @@ import yaml
 import discord
 import os
 import random
-import utils
-from handlers import *
-from embeds import helpEmbed
+import app.utils
+from app.handlers import *
+from app.embeds import helpEmbed
 from discord.ext import commands
 
 DEV_MODE = True
