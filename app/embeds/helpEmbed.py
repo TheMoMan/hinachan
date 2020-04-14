@@ -45,6 +45,8 @@ def getResponses():
     HELP_EMBED.add_field(name='👍', value='ビッ')
     HELP_EMBED.add_field(name='🖕', value='Flip the bird.')
 
+    return HELP_EMBED
+
 def getUtils():
     HELP_EMBED = getBase()
     HELP_EMBED.title = ':wrench: Hina-chan Utility Commands'
