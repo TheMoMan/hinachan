@@ -59,4 +59,5 @@ client.add_cog(imageHandler.ImageHandler(client, config))
 client.add_cog(masterHandler.MasterHandler(client, config))
 client.add_cog(utilHandler.UtilHandler(client, config))
 
-client.run(config['secret'])
+with open(config['secret'], 'r') as f:
+    client.run(f.readline())

@@ -4,6 +4,7 @@
 # Secrets
 prod.yml
 dev.yml
+*.secret
 
 # Python generated files
 __pycache__
