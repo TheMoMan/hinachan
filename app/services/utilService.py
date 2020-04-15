@@ -14,6 +14,9 @@ class UtilService():
         elif category.lower() == 'responses':
             embed = helpEmbed.getResponses()
 
+        elif category.lower() == 'game_utilities':
+            embed = helpEmbed.getGameUtils()
+
         elif category.lower() == 'utilities':
             embed = helpEmbed.getUtils()
 

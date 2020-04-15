@@ -17,6 +17,9 @@ def getMain():
     images = ['finger', 'muppet', 'thumbsup', 'simon']
     HELP_EMBED.add_field(name=':frame_photo: Images', value=formatCommandsForMain(images))
 
+    gameUtils = ['defuse']
+    HELP_EMBED.add_field(name=':game_die: Game Utilities', value=formatCommandsForMain(gameUtils))
+
     responses = ['^', '👍', '🖕']
     HELP_EMBED.add_field(name=':speech_left: Responses', value=formatCommandsForMain(responses))
 
@@ -36,6 +39,15 @@ def getImages():
 
     return HELP_EMBED
 
+def getGameUtils():
+    HELP_EMBED = getBase()
+    HELP_EMBED.title = ':game_die: Hina-chan Game Utilities'
+    HELP_EMBED.description = 'Commands that return an image.'
+    
+    HELP_EMBED.add_field(name='!defuse', value='Solves a Bomb Party letter combination.')
+
+    return HELP_EMBED
+
 def getResponses():
     HELP_EMBED = getBase()
     HELP_EMBED.title = ':speech_left: Hina-chan Responses'
@@ -49,7 +61,7 @@ def getResponses():
 
 def getUtils():
     HELP_EMBED = getBase()
-    HELP_EMBED.title = ':wrench: Hina-chan Utility Commands'
+    HELP_EMBED.title = ':wrench: Hina-chan Utilities'
     HELP_EMBED.description = 'Commands with a useful functionality.'
 
     HELP_EMBED.add_field(name='!911', value='For emergencies.')
