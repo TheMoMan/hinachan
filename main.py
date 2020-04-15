@@ -1,2 +1,2 @@
-import configs.prodConfig
+import configs.devConfig
 import app.client

@@ -28,10 +28,12 @@ class GameUtilService():
 
 
             else:
-                msg = '`' + '` `'.join(validWords[0:10]) + '`'
+                display = 15
 
-                if len(validWords) > 10:
-                    msg += ' and {} more'.format(len(validWords) - 10)
+                msg = '`' + '` `'.join(validWords[0:display]) + '`'
+
+                if len(validWords) > display:
+                    msg += ' and {} more'.format(len(validWords) - display)
 
                 await ctx.channel.send(msg)
 
