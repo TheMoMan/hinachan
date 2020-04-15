@@ -11,4 +11,4 @@ dev.yml
 __pycache__
 
 # Sandbox
-sandbox.py
+sandbox.*

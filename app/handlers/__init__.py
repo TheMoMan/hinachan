@@ -1,1 +1,1 @@
-__all__ = ['imageHandler', 'masterHandler', 'responseHandler', 'utilHandler']
+__all__ = ['gameUtilHandler', 'imageHandler', 'masterHandler', 'responseHandler', 'utilHandler']

@@ -25,8 +25,8 @@ async def on_ready():
     print('Client ID: {}'.format(client.user.id))
     print('------')
 
-
 client.add_cog(imageHandler.ImageHandler(client))
+client.add_cog(gameUtilHandler.GameUtilHandler(client))
 client.add_cog(masterHandler.MasterHandler(client))
 client.add_cog(utilHandler.UtilHandler(client))
 
