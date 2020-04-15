@@ -1,5 +1,6 @@
 import discord
 from app.embeds import helpEmbed
+from random import randint
 
 class UtilService():
     async def sendHelp(self, ctx: discord.Message, category: str=None):
@@ -29,5 +30,17 @@ class UtilService():
 
         with open('lib/911.txt', 'r', encoding='utf-8') as f:
             await ctx.channel.send(f.read())
+
+        return True
+
+    async def randomInteger(self, ctx: discord.Message, max: int=100):
+        print('roll called')
+
+        num = randint(1, max)
+        
+        await ctx.channel.send(':game_die: **{}** rolls **{}**'.format(ctx.author.display_name, num))
+
+        if num == 69:
+            await ctx.channel.send('nice')
 
         return True

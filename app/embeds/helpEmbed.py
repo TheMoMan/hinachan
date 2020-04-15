@@ -44,7 +44,7 @@ def getGameUtils():
     HELP_EMBED.title = ':game_die: Hina-chan Game Utilities'
     HELP_EMBED.description = 'Commands that return an image.'
     
-    HELP_EMBED.add_field(name='!defuse', value='Solves a Bomb Party letter combination.')
+    HELP_EMBED.add_field(name='!defuse <letters>', value='Solves a Bomb Party letter combination.')
 
     return HELP_EMBED
 

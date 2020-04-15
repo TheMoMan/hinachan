@@ -26,7 +26,6 @@ class GameUtilService():
             if len(validWords) == 0:
                 await ctx.channel.send('No words with combination {} found!'.format(letters))
 
-
             else:
                 display = 15
 

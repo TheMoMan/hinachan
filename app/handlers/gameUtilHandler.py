@@ -8,5 +8,5 @@ class GameUtilHandler(commands.Cog):
         self.service = gameUtilService.GameUtilService()
 
     @commands.command()
-    async def defuse(self, ctx: discord.Message, letters: str):
+    async def defuse(self, ctx: discord.Message, letters: str=''):
         await self.service.findWordWithCombination(ctx, letters)

@@ -13,3 +13,15 @@ class UtilHandler(commands.Cog):
     @commands.command(name='911')
     async def nineoneone(self, ctx: discord.Message):
         await self.service.sendNineOneOne(ctx)
+
+    @commands.command()
+    async def roll(self, ctx: discord.Message, max: str='100'):
+        try:
+            max = int(max)
+            if max < 1 or max > 2147483647:
+                max = 100
+
+        except:
+            max = 100
+        
+        await self.service.randomInteger(ctx, max)
