@@ -7,9 +7,12 @@ class UtilHandler(commands.Cog):
         self.service = utilService.UtilService()
 
     @commands.command()
-    async def help(self, ctx: discord.Message, category: str=None):
+    async def help(self, ctx: discord.Message):
+        category = ctx.message.content[6:]
+
+
         helpEmbed = self.service.getHelp(category)
-        
+
         await ctx.channel.send(embed=helpEmbed)
 
     @commands.command(name='911')
