@@ -23,7 +23,7 @@ def getMain():
     responses = ['^', '👍', '🖕']
     HELP_EMBED.add_field(name=':speech_left: Responses', value=formatCommandsForMain(responses))
 
-    utils = ['911']
+    utils = ['911', 'choose', 'roll']
     HELP_EMBED.add_field(name=':wrench: Utilities', value=formatCommandsForMain(utils))
 
     return HELP_EMBED
@@ -65,5 +65,7 @@ def getUtils():
     HELP_EMBED.description = 'Commands with a useful functionality.'
 
     HELP_EMBED.add_field(name='!911', value='For emergencies.')
+    HELP_EMBED.add_field(name='!choose <option1> | <option2> ...', value='Picks a random option from a given list.')
+    HELP_EMBED.add_field(name='!roll <max?>', value='Rolls a random number (default 1-100).')
 
     return HELP_EMBED

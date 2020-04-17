@@ -36,3 +36,14 @@ class UtilService():
         print('getRandomInteger called')
 
         return randint(1, max)
+
+    def chooseOptionFromString(self, options: str):
+        optionsArr = options.split('|')
+        optionsLen = len(optionsArr)
+
+        if optionsLen <= 1:
+            raise ValueError('Not enough options.')
+
+        index = randint(0, optionsLen-1)
+
+        return optionsArr[index].strip(' ')

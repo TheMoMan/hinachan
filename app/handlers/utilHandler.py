@@ -10,7 +10,6 @@ class UtilHandler(commands.Cog):
     async def help(self, ctx: commands.Context):
         category = ctx.message.content[6:]
 
-
         helpEmbed = self.service.getHelp(category)
 
         await ctx.channel.send(embed=helpEmbed)
@@ -40,4 +39,12 @@ class UtilHandler(commands.Cog):
 
     @commands.command()
     async def choose(self, ctx: commands.Context):
-        print('')
+        options = ctx.message.content[8:]
+
+        try:
+            option = self.service.chooseOptionFromString(options)
+
+            await ctx.channel.send('{}!'.format(option))
+        
+        except ValueError:
+            await ctx.channel.send('Use pipe `|` to separate options.')
