@@ -1,5 +1,6 @@
 import discord
 from app.services import imageService, textService
+from discord.ext import commands
 
 class ResponseHandler():
     def __init__(self, client):
@@ -7,7 +8,7 @@ class ResponseHandler():
         self.imageService = imageService.ImageService()
         self.textService = textService.TextService()
 
-    async def handle(self, ctx: discord.Message):
+    async def handle(self, ctx: commands.Context):
         if ctx.author == self.client.user:
             return True
 

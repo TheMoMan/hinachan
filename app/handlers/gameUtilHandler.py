@@ -8,7 +8,7 @@ class GameUtilHandler(commands.Cog):
         self.service = gameUtilService.GameUtilService()
 
     @commands.command()
-    async def defuse(self, ctx: discord.Message, letters: str=''):
+    async def defuse(self, ctx: commands.Context, letters: str=''):
         if len(letters) < 2:
             await ctx.channel.send('Need a combination of at least 2 letters!')
 

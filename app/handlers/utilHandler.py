@@ -7,7 +7,7 @@ class UtilHandler(commands.Cog):
         self.service = utilService.UtilService()
 
     @commands.command()
-    async def help(self, ctx: discord.Message):
+    async def help(self, ctx: commands.Context):
         category = ctx.message.content[6:]
 
 
@@ -16,13 +16,13 @@ class UtilHandler(commands.Cog):
         await ctx.channel.send(embed=helpEmbed)
 
     @commands.command(name='911')
-    async def nineOneOne(self, ctx: discord.Message):
+    async def nineOneOne(self, ctx: commands.Context):
         content = self.service.getNineOneOne()
 
         await ctx.channel.send(content)
 
     @commands.command()
-    async def roll(self, ctx: discord.Message, max: str='100'):
+    async def roll(self, ctx: commands.Context, max: str='100'):
         try:
             max = int(max)
             if max < 1 or max > 2147483647:
@@ -37,3 +37,7 @@ class UtilHandler(commands.Cog):
 
         if num == 69:
             await ctx.channel.send('nice')
+
+    @commands.command()
+    async def choose(self, ctx: commands.Context):
+        print('')

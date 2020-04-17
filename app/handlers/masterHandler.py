@@ -11,7 +11,7 @@ class MasterHandler(commands.Cog):
         self.ownerId = int(os.environ['OWNER_ID'])
 
     @commands.command()
-    async def setNick(self, ctx: discord.Message, nickname: str=None):
+    async def setNick(self, ctx: commands.Context, nickname: str=None):
         if ctx.author.id == self.ownerId:
             print('Attempt to set my nickname to {}'.format(nickname))
 
