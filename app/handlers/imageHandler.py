@@ -9,16 +9,25 @@ class ImageHandler(commands.Cog):
 
     @commands.command()
     async def finger(self, ctx: discord.Message):
-        await self.service.sendFinger(ctx)
+        img = self.service.getFinger()
+
+        await ctx.channel.send(file=img)
 
     @commands.command()
     async def simon(self, ctx: discord.Message):
-        await self.service.sendSimon(ctx)
+        if(ctx.guild.get_member(109626488076111872) != None):
+            img = self.service.getSimon()
+
+            await ctx.channel.send(file=img)
 
     @commands.command()
     async def muppet(self, ctx: discord.Message):
-        await self.service.sendMuppet(ctx)
+        img = self.service.getMuppet()
+
+        await ctx.channel.send(file=img)
 
     @commands.command(aliases=['+1', '👍'])
     async def thumbsup(self, ctx: discord.Message):
-        await self.service.sendThumbsUp(ctx)
+        img = self.service.getThumbsUp()
+
+        await ctx.channel.send(file=img)

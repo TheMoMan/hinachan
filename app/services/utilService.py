@@ -3,44 +3,36 @@ from app.embeds import helpEmbed
 from random import randint
 
 class UtilService():
-    async def sendHelp(self, ctx: discord.Message, category: str=None):
-        print('sendHelp called')
+    def getHelp(self, category: str=None):
+        print('getHelp called')
 
         if not category:
-            embed = helpEmbed.getMain()
+            return helpEmbed.getMain()
 
         elif category.lower() == 'images':
-            embed = helpEmbed.getImages()
+            return helpEmbed.getImages()
         
         elif category.lower() == 'responses':
-            embed = helpEmbed.getResponses()
+            return helpEmbed.getResponses()
 
         elif category.lower() == 'game_utilities':
-            embed = helpEmbed.getGameUtils()
+            return helpEmbed.getGameUtils()
 
         elif category.lower() == 'utilities':
-            embed = helpEmbed.getUtils()
+            return helpEmbed.getUtils()
 
-        await ctx.channel.send(embed=embed)
+        return helpEmbed.getMain()
 
-        return True
 
-    async def sendNineOneOne(self, ctx: discord.Message):
-        print('sendNineOneOne called')
+    def getNineOneOne(self):
+        print('getNineOneOne called')
 
         with open('lib/911.txt', 'r', encoding='utf-8') as f:
-            await ctx.channel.send(f.read())
+            content = f.read()
 
-        return True
+        return content
 
-    async def randomInteger(self, ctx: discord.Message, max: int=100):
-        print('roll called')
+    def getRandomInteger(self, max: int=100):
+        print('getRandomInteger called')
 
-        num = randint(1, max)
-        
-        await ctx.channel.send(':game_die: **{}** rolls **{}**'.format(ctx.author.display_name, num))
-
-        if num == 69:
-            await ctx.channel.send('nice')
-
-        return True
+        return randint(1, max)

@@ -8,11 +8,15 @@ class UtilHandler(commands.Cog):
 
     @commands.command()
     async def help(self, ctx: discord.Message, category: str=None):
-        await self.service.sendHelp(ctx, category)
+        helpEmbed = self.service.getHelp(category)
+        
+        await ctx.channel.send(embed=helpEmbed)
 
     @commands.command(name='911')
-    async def nineoneone(self, ctx: discord.Message):
-        await self.service.sendNineOneOne(ctx)
+    async def nineOneOne(self, ctx: discord.Message):
+        content = self.service.getNineOneOne()
+
+        await ctx.channel.send(content)
 
     @commands.command()
     async def roll(self, ctx: discord.Message, max: str='100'):
@@ -24,4 +28,9 @@ class UtilHandler(commands.Cog):
         except:
             max = 100
         
-        await self.service.randomInteger(ctx, max)
+        num = self.service.getRandomInteger(max)
+
+        await ctx.channel.send(':game_die: **{}** rolls **{}**'.format(ctx.author.display_name, num))
+
+        if num == 69:
+            await ctx.channel.send('nice')

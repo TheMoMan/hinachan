@@ -2,9 +2,7 @@ import discord
 import os
 
 class TextService():
-    async def sendIAgree(self, ctx: discord.Message):
-        print('sendIAgree called')
+    def getIAgree(self):
+        print('getIAgree called')
 
-        await ctx.channel.send('I agree!')
-
-        return True
+        return 'I agree!'

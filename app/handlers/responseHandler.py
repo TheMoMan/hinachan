@@ -14,12 +14,24 @@ class ResponseHandler():
         content = ctx.content
         
         if content in ['!^', '^']:
-            return await self.textService.sendIAgree(ctx)
+            msg = self.textService.getIAgree()
+
+            await ctx.channel.send(msg)
+
+            return True
 
         elif content == '👍':
-            return await self.imageService.sendThumbsUp(ctx)
+            img = self.imageService.getThumbsUp()
+
+            await ctx.channel.send(file=img)
+
+            return True
 
         elif content == '🖕':
-            return await self.imageService.sendFinger(ctx)
+            img = self.imageService.getFinger()
+
+            await ctx.channel.send(file=img)
+
+            return True
 
         return False

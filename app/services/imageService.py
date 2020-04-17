@@ -2,47 +2,24 @@ import discord
 import app.utils as utils
 
 class ImageService():
-    async def sendFinger(self, ctx: discord.Message):
-        print('sendFinger called')
+    def getFinger(self):
+        print('getFinger called')
 
         file = utils.pickRandomFile('finger')
+        return discord.File(file)
 
-        await ctx.channel.send(
-            file=discord.File(file)
-        )
+    def getSimon(self):
+        print('getSimon called')
 
-        return True
+        file = utils.pickRandomFile('simon')
+        return discord.File(file)
 
-    async def sendSimon(self, ctx: discord.Message):
-        print('sendSimon called')
+    def getMuppet(self):
+        print('getMuppet called')
 
-        if(ctx.guild.get_member(109626488076111872) != None):
-            file = utils.pickRandomFile('simon')
+        return discord.File('lib/muppet.jpg')
 
-            await ctx.channel.send(
-                file=discord.File(file)
-            )
+    def getThumbsUp(self):
+        print('getThumbsUp called')
 
-        return True
-
-    async def sendMuppet(self, ctx: discord.Message):
-        print('sendMuppet called')
-
-        file = 'lib/muppet.jpg'
-
-        await ctx.channel.send(
-            file=discord.File(file)
-        )
-
-        return True
-
-    async def sendThumbsUp(self, ctx: discord.Message):
-        print('sendThumbsUp called')
-
-        file = 'lib/thumbsup.jpg'
-
-        await ctx.channel.send(
-            file=discord.File(file)
-        )
-
-        return True
+        return discord.File('lib/thumbsup.jpg')
