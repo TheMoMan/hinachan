@@ -9,9 +9,6 @@ class ResponseHandler():
         self.textService = textService.TextService()
 
     async def handle(self, ctx: commands.Context):
-        if ctx.author == self.client.user:
-            return True
-
         content = ctx.content
         
         if content in ['!^', '^']:

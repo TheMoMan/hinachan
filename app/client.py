@@ -14,7 +14,10 @@ response = responseHandler.ResponseHandler(client)
 
 @client.event
 async def on_message(message: discord.Message):
-    if(await response.handle(message)):
+    if message.author == client.user or message.author.bot:
+        return
+    
+    if await response.handle(message):
         return
 
     await client.process_commands(message)
