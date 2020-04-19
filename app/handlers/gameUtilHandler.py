@@ -14,13 +14,13 @@ class GameUtilHandler(commands.Cog):
 
         display = 15
         
-        words = self.service.findWordWithCombination(letters)
+        words = self.service.findWordsWithCombination(letters)
 
         if len(words) == 0:
-            await ctx.channel.send('No words with combination {} found!'.format(letters))
+            await ctx.channel.send('No words with combination {} found!'.format(letters.upper()))
 
         else:
-            msg = '`' + '` `'.join(words[0:display]) + '`'
+            msg = '{} : `'.format(letters.upper()) + '` `'.join(words[0:display]) + '`'
 
             if len(words) > display:
                 msg += ' and {} more'.format(len(words) - display)
