@@ -2,4 +2,4 @@
 
 Mo's personal Discord bot. She does silly stuff. Not intended for public use.
 
-Version: 2.3.1
+Version: 2.4.0
