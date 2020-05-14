@@ -31,3 +31,15 @@ class GameUtilService():
                 categories.append(category)
 
         return categories
+
+    def createOsuEditorLink(self, timestamps: list):
+        print('createOsuEditorLink called')
+
+        formatted = ['<osu://edit/{}>'.format(timestamp, timestamp).replace(' ', '_') for timestamp in timestamps]
+
+        embed = discord.Embed(colour=0xFA8681)
+
+        embed.title = ':thought_balloon: Timestamps'
+        embed.description = '\n'.join(formatted)
+
+        return embed

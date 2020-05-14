@@ -1,5 +1,6 @@
 import discord
-from app.services import imageService, textService
+import re
+from app.services import imageService, textService, gameUtilService
 from discord.ext import commands
 
 class ResponseHandler():
@@ -7,9 +8,12 @@ class ResponseHandler():
         self.client = client
         self.imageService = imageService.ImageService()
         self.textService = textService.TextService()
+        self.gameUtilService = gameUtilService.GameUtilService()
 
     async def handle(self, ctx: commands.Context):
         content = ctx.content
+
+        timestamps = re.findall('\d{2}:\d{2}:\d{3}(?: \((?:\d|\d,)+\))?', content)
         
         if content in ['!^', '^']:
             msg = self.textService.getIAgree()
@@ -29,6 +33,13 @@ class ResponseHandler():
             img = self.imageService.getFinger()
 
             await ctx.channel.send(file=img)
+
+            return True
+        
+        elif len(timestamps) > 0:
+            embed = self.gameUtilService.createOsuEditorLink(timestamps)
+
+            await ctx.channel.send(embed=embed)
 
             return True
 
