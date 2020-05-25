@@ -44,3 +44,23 @@ class ResponseHandler():
             return True
 
         return False
+
+    async def handleLast(self, ctx: commands.Context):
+        content = ctx.content
+
+        if 'hina' in content.lower():
+            tries = 0
+
+            async with ctx.channel.typing():
+                while tries <= 5:
+                    msg = await self.textService.getRandomMessage(ctx.channel)
+
+                    if len(msg) > 0:
+                        break
+
+                    tries += 1
+                
+                if len(msg) == 0:
+                    msg = 'I agree!'
+
+                await ctx.channel.send(msg)

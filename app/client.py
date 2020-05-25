@@ -22,6 +22,8 @@ async def on_message(message: discord.Message):
 
     await client.process_commands(message)
 
+    await response.handleLast(message)
+
 @client.event
 async def on_ready():
     print('User: {}'.format(client.user.name))
