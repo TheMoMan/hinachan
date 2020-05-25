@@ -1,5 +1,6 @@
 import discord
 import re
+import os
 from app.services import imageService, textService, gameUtilService
 from discord.ext import commands
 
@@ -48,7 +49,7 @@ class ResponseHandler():
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
 
-        if 'hina' in content.lower():
+        if 'hina' in content.lower() or os.environ['USER_ID'] in content.lower():
             tries = 0
 
             async with ctx.channel.typing():
