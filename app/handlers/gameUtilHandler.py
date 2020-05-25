@@ -17,32 +17,33 @@ class GameUtilHandler(commands.Cog):
             return
 
         if '-v' in flags or '--verbose' in flags:
-            display = 30
+            async with ctx.channel.typing():
+                display = 30
 
-            wordCategories = self.service.categoriseWordsWithCombination(letters)
+                wordCategories = self.service.categoriseWordsWithCombination(letters)
 
-            if len(wordCategories) == 0:
-                await ctx.channel.send('No words with combination {} found!'.format(letters.upper()))
+                if len(wordCategories) == 0:
+                    await ctx.channel.send('No words with combination {} found!'.format(letters.upper()))
+                    return
+
+                msg = ''
+
+                for category in wordCategories:
+                    line = '**{} - {} letters:**\n`'.format(letters.upper(), len(category[0]))  + '` `'.join(category[0:display]) + '`'
+
+                    if len(category) > display:
+                        line += ' and {} more'.format(len(category) - display)
+
+                    if len(msg) + len(line) > 1996:
+                        await ctx.channel.send(msg)
+                        msg = line + '\n\n'
+
+                    else:
+                        msg += (line + '\n\n')
+
+                await ctx.channel.send(msg)
+
                 return
-
-            msg = ''
-
-            for category in wordCategories:
-                line = '**{} - {} letters:**\n`'.format(letters.upper(), len(category[0]))  + '` `'.join(category[0:display]) + '`'
-
-                if len(category) > display:
-                    line += ' and {} more'.format(len(category) - display)
-
-                if len(msg) + len(line) > 1996:
-                    await ctx.channel.send(msg)
-                    msg = line + '\n\n'
-
-                else:
-                    msg += (line + '\n\n')
-
-            await ctx.channel.send(msg)
-
-            return
 
         display = 15
         
