@@ -49,7 +49,7 @@ class ResponseHandler():
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
 
-        if 'hina' in content.lower() or os.environ['USER_ID'] in content.lower():
+        if ('hina' in content.lower() or os.environ['USER_ID'] in content.lower()) and 'china' not in content.lower():
             tries = 0
 
             async with ctx.channel.typing():
