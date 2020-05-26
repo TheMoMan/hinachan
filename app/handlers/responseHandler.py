@@ -1,6 +1,7 @@
 import discord
 import re
 import os
+import json
 from app.services import imageService, textService, gameUtilService
 from discord.ext import commands
 
@@ -48,13 +49,19 @@ class ResponseHandler():
 
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
+        badWords = json.loads(os.environ['BAD_WORDS'])
 
         if ('hina' in content.lower() or os.environ['USER_ID'] in content.lower()) and 'china' not in content.lower():
             tries = 0
 
             async with ctx.channel.typing():
-                while tries <= 5:
+                while tries < 5:
                     msg = await self.textService.getRandomMessage(ctx.channel)
+
+                    for word in badWords:
+                        if word in msg.lower():
+                            msg = ''
+                            break
 
                     if len(msg) > 0:
                         break
