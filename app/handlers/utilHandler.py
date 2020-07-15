@@ -20,7 +20,7 @@ class UtilHandler(commands.Cog):
 
         await ctx.channel.send(content)
 
-    @commands.command()
+    @commands.command(aliases=['dice', 'rand'])
     async def roll(self, ctx: commands.Context, max: str='100'):
         try:
             max = int(max)
