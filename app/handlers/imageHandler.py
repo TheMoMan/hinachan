@@ -31,3 +31,9 @@ class ImageHandler(commands.Cog):
         img = self.service.getThumbsUp()
 
         await ctx.channel.send(file=img)
+
+    @commands.command(aliases=['police'])
+    async def fbi(self, ctx: commands.Context):
+        img = self.service.getFbi()
+
+        await ctx.channel.send(file=img)

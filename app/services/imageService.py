@@ -13,6 +13,12 @@ class ImageService():
 
         file = utils.pickRandomFile('simon')
         return discord.File(file)
+    
+    def getFbi(self):
+        print('getFbi called')
+
+        file = utils.pickRandomFile('fbi')
+        return discord.File(file)
 
     def getMuppet(self):
         print('getMuppet called')
