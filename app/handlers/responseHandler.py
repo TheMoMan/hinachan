@@ -44,6 +44,13 @@ class ResponseHandler():
             await ctx.channel.send(embed=embed)
 
             return True
+        
+        elif 'Happy birthday' in content and ctx.author.id == int(os.environ['OWNER_ID']):
+            msg = self.textService.getHappyBirthday()
+
+            await ctx.channel.send(msg)
+
+            return True
 
         return False
 
