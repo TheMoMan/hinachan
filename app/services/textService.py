@@ -8,12 +8,12 @@ class TextService():
         print('getIAgree called')
 
         return 'I agree!'
-    
+
     def getHappyBirthday(self):
         print('getHappyBirthday called')
 
         return 'Happy Birthday!'
-    
+
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
 

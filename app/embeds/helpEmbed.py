@@ -14,7 +14,7 @@ def getMain():
     HELP_EMBED.title = ':page_facing_up: Hina-chan Commands'
     HELP_EMBED.description = 'You can also do `!help <category>` for slightly more detailed help.\ne.g. `!help images`'
     
-    images = ['fbi', 'finger', 'muppet', 'thumbsup', 'simon']
+    images = ['fbi', 'finger', 'muppet', 'ohno', 'simon', 'thumbsup']
     HELP_EMBED.add_field(name=':frame_photo: Images', value=formatCommandsForMain(images))
 
     gameUtils = ['defuse']
@@ -36,6 +36,7 @@ def getImages():
     HELP_EMBED.add_field(name='!fbi', value='Open up!')
     HELP_EMBED.add_field(name='!finger', value='Flip the bird.')
     HELP_EMBED.add_field(name='!muppet', value='You muppet!')
+    HELP_EMBED.add_field(name='!ohno', value='Anyway...')
     HELP_EMBED.add_field(name='!thumbsup', value=':thumbsup:')
 
     return HELP_EMBED

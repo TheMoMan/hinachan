@@ -29,3 +29,8 @@ class ImageService():
         print('getThumbsUp called')
 
         return discord.File('lib/thumbsup.jpg')
+
+    def getOhNo(self):
+        print('getOhNo called')
+
+        return discord.File('lib/ohno.jpg')

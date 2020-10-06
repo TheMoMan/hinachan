@@ -37,3 +37,9 @@ class ImageHandler(commands.Cog):
         img = self.service.getFbi()
 
         await ctx.channel.send(file=img)
+
+    @commands.command(aliases=['ohno', 'anyway'])
+    async def ohNo(self, ctx: commands.Context):
+        img = self.service.getOhNo()
+
+        await ctx.channel.send(file=img)
