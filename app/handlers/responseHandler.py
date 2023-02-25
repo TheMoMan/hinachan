@@ -38,7 +38,7 @@ class ResponseHandler():
 
             return True
         
-        elif ['rock and stone', 'drg', 'deep rock'] in content.lower():
+        elif (substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock']):
             msg = self.textService.getRockAndStone()
 
             await ctx.channel.send(msg)
