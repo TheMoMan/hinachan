@@ -38,6 +38,13 @@ class ResponseHandler():
 
             return True
         
+        elif ['rock and stone', 'drg', 'deep rock'] in content.lower():
+            msg = self.textService.getRockAndStone()
+
+            await ctx.channel.send(msg)
+
+            return True
+        
         elif len(timestamps) > 0:
             embed = self.gameUtilService.createOsuEditorLink(timestamps)
 

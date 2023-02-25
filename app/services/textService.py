@@ -13,6 +13,24 @@ class TextService():
         print('getHappyBirthday called')
 
         return 'Happy Birthday!'
+    
+    def getRockAndStone(self):
+        print('getRockAndStoneCalled')
+
+        rockAndStone = [
+            'Rock and Stone!',
+            'Did I hear a Rock and Stone?',
+            'For Rock and Stone!',
+            'For Karl!',
+            'Rock and Stone to the Bone!',
+            'Rock and Rolling Stone!',
+            'If you don\'t Rock and Stone, you ain\'t coming home!',
+            'We fight for Rock and Stone!',
+            'Rock and Stone in the Heart!',
+            'Rock and Stone forever!',
+        ]
+
+        return random.choice(rockAndStone)
 
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
