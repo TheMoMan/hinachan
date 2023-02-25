@@ -8,7 +8,7 @@ from discord.ext import commands
 
 prefix = os.environ['PREFIX']
 
-client = commands.Bot(command_prefix=prefix, help_command=None)
+client = commands.Bot(command_prefix=prefix, help_command=None, intents=discord.Intents.all())
 
 response = responseHandler.ResponseHandler(client)
 
@@ -30,10 +30,10 @@ async def on_ready():
     print('Client ID: {}'.format(client.user.id))
     print('------')
 
-client.add_cog(imageHandler.ImageHandler(client))
-client.add_cog(gameUtilHandler.GameUtilHandler(client))
-client.add_cog(masterHandler.MasterHandler(client))
-client.add_cog(utilHandler.UtilHandler(client))
+    await client.add_cog(imageHandler.ImageHandler(client))
+    await client.add_cog(gameUtilHandler.GameUtilHandler(client))
+    await client.add_cog(masterHandler.MasterHandler(client))
+    await client.add_cog(utilHandler.UtilHandler(client))
 
 with open(os.environ['SECRET'], 'r') as f:
     client.run(f.readline())
