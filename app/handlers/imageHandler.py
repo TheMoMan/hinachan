@@ -15,7 +15,6 @@ class ImageHandler(commands.Cog):
 
     @commands.command()
     async def simon(self, ctx: commands.Context):
-        # if(ctx.guild.get_member(109626488076111872) != None): Seems inconsistent
         img = self.service.getSimon()
 
         await ctx.channel.send(file=img)

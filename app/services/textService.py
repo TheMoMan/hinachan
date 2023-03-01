@@ -1,7 +1,7 @@
 import discord
 import os
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 class TextService():
     def getIAgree(self):
@@ -13,7 +13,7 @@ class TextService():
         print('getHappyBirthday called')
 
         return 'Happy Birthday!'
-    
+
     def getRockAndStone(self):
         print('getRockAndStoneCalled')
 
@@ -28,21 +28,27 @@ class TextService():
             'We fight for Rock and Stone!',
             'Rock and Stone in the Heart!',
             'Rock and Stone forever!',
+            'We\'re rich!',
         ]
 
         return random.choice(rockAndStone)
 
+    def wysi(self):
+        print ('wysi called')
+
+        return 'wysi'
+
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
 
-        oldest = await channel.history(oldest_first=True, limit=1).flatten()
-        channelAge = (datetime.now() - oldest[0].created_at).days
+        oldest: list[discord.Message] = [message async for message in channel.history(oldest_first=True, limit=1)]
+        channelAge = (datetime.now(timezone.utc) - oldest[0].created_at).days
 
         randomDay = random.randint(0, channelAge)
         randomMinute = random.randint(-720, 720)
         randomDate = datetime.now() - timedelta(days=randomDay, minutes=randomMinute)
 
-        messages = await channel.history(limit=101, around=randomDate).filter(lambda msg: msg.author.bot == False).flatten()
+        messages = [message async for message in channel.history(limit=99, around=randomDate) if message.author.bot == False]
 
         print('{} messages to choose from'.format(len(messages)))
         return random.choice(messages).content

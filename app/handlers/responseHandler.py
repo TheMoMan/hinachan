@@ -12,11 +12,13 @@ class ResponseHandler():
         self.textService = textService.TextService()
         self.gameUtilService = gameUtilService.GameUtilService()
 
+    # I look at this now and I hate it. TODO: Stop with the elifs
     async def handle(self, ctx: commands.Context):
         content = ctx.content
 
         timestamps = re.findall('\d{2}:\d{2}:\d{3}(?: \((?:\d|\d,)+\))?', content)
-        
+        wysi = re.findall('7.{0,2}2.{0,2}7', content)
+
         if content in ['!^', '^']:
             msg = self.textService.getIAgree()
 
@@ -37,21 +39,28 @@ class ResponseHandler():
             await ctx.channel.send(file=img)
 
             return True
-        
-        elif any(substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock']):
+
+        elif any(substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock', 'mining']):
             msg = self.textService.getRockAndStone()
 
             await ctx.channel.send(msg)
 
             return True
-        
+
         elif len(timestamps) > 0:
             embed = self.gameUtilService.createOsuEditorLink(timestamps)
 
             await ctx.channel.send(embed=embed)
 
             return True
-        
+
+        elif len(wysi) > 0:
+            msg = self.textService.wysi()
+
+            await ctx.channel.send(msg)
+
+            return True
+
         elif 'Happy birthday' in content and ctx.author.id == int(os.environ['OWNER_ID']):
             msg = self.textService.getHappyBirthday()
 
@@ -81,7 +90,7 @@ class ResponseHandler():
                         break
 
                     tries += 1
-                
+
                 if len(msg) == 0:
                     msg = 'I agree!'
 
