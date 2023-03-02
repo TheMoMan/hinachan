@@ -17,7 +17,7 @@ class ResponseHandler():
         content = ctx.content
 
         timestamps = re.findall('\d{2}:\d{2}:\d{3}(?: \((?:\d|\d,)+\))?', content)
-        wysi = re.findall('7.{0,2}2.{0,2}7', content)
+        wysi = re.findall('7( +\D*|\D* +|\D?)2( +\D*|\D* +|\D?)7', content)
 
         if content in ['!^', '^']:
             msg = self.textService.getIAgree()
