@@ -42,3 +42,9 @@ class ImageHandler(commands.Cog):
         img = self.service.getOhNo()
 
         await ctx.channel.send(file=img)
+
+    @commands.command()
+    async def what(self, ctx: commands.Context):
+        img = self.service.what()
+
+        await ctx.channel.send(file=img)

@@ -26,42 +26,42 @@ class ResponseHandler():
 
             return True
 
-        elif content == '👍':
+        if content == '👍':
             img = self.imageService.getThumbsUp()
 
             await ctx.channel.send(file=img)
 
             return True
 
-        elif content == '🖕':
+        if content == '🖕':
             img = self.imageService.getFinger()
 
             await ctx.channel.send(file=img)
 
             return True
 
-        elif any(substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock', 'mining']):
+        if any(substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock', 'mining']):
             msg = self.textService.getRockAndStone()
 
             await ctx.channel.send(msg)
 
             return True
 
-        elif len(timestamps) > 0:
+        if len(timestamps) > 0:
             embed = self.gameUtilService.createOsuEditorLink(timestamps)
 
             await ctx.channel.send(embed=embed)
 
             return True
 
-        elif len(wysi) > 0:
+        if len(wysi) > 0:
             msg = self.textService.wysi()
 
             await ctx.channel.send(msg)
 
             return True
 
-        elif 'Happy birthday' in content and ctx.author.id == int(os.environ['OWNER_ID']):
+        if 'Happy birthday' in content and ctx.author.id == int(os.environ['OWNER_ID']):
             msg = self.textService.getHappyBirthday()
 
             await ctx.channel.send(msg)
