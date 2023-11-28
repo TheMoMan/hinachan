@@ -18,6 +18,7 @@ class ResponseHandler():
 
         timestamps = re.findall('\d{2}:\d{2}:\d{3}(?: \((?:\d|\d,)+\))?', content)
         wysi = re.findall('7( +\D*|\D* +|\D?)2( +\D*|\D* +|\D?)7', content)
+        happyBirthday = re.findall('\\bhappy birthday\\b', content, re.IGNORECASE)
 
         if content in ['!^', '^']:
             msg = self.textService.getIAgree()
@@ -61,7 +62,7 @@ class ResponseHandler():
 
             return True
 
-        if 'Happy birthday' in content and ctx.author.id == int(os.environ['OWNER_ID']):
+        if len(happyBirthday) > 0 and ctx.author.id == int(os.environ['OWNER_ID']):
             msg = self.textService.getHappyBirthday()
 
             await ctx.channel.send(msg)
