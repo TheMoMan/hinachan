@@ -41,7 +41,7 @@ class ResponseHandler():
 
             return True
 
-        if any(substring in content.lower() for substring in ['rock and stone', 'drg', 'deep rock', 'mining']):
+        if any(substring in content.lower() for substring in ['rock and stone', 'deep rock', 'mining', 'miner', 'dwarf']):
             msg = self.textService.getRockAndStone()
 
             await ctx.channel.send(msg)
