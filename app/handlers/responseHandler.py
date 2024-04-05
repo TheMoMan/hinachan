@@ -11,6 +11,7 @@ class ResponseHandler():
         self.imageService = imageService.ImageService()
         self.textService = textService.TextService()
         self.gameUtilService = gameUtilService.GameUtilService()
+        self.lastMessagesCache = {}
 
     # I look at this now and I hate it. TODO: Stop with the elifs
     async def handle(self, ctx: commands.Context):
@@ -96,3 +97,5 @@ class ResponseHandler():
                     msg = 'I agree!'
 
                 await ctx.channel.send(msg)
+        
+        await self.textService.messageRepeater(ctx, self.lastMessagesCache)

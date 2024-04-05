@@ -2,6 +2,7 @@ import discord
 import os
 import random
 from datetime import datetime, timedelta, timezone
+from discord.ext import commands
 
 class TextService():
     def getIAgree(self):
@@ -52,3 +53,19 @@ class TextService():
 
         print('{} messages to choose from'.format(len(messages)))
         return random.choice(messages).content
+    
+    async def messageRepeater(self, ctx: commands.Context, lastMessagesCache):
+        try:
+            oldMessage = lastMessagesCache[ctx.channel.id]
+
+        except:
+            oldMessage = { 'message': '', 'author': '' }
+        
+        if oldMessage['message'] == ctx.content and oldMessage['author'] != ctx.author.id and not ctx.author.bot:
+            await ctx.channel.send(ctx.content)
+            lastMessagesCache[ctx.channel.id] = { 'message': '', 'author': '' }
+
+            return
+
+        lastMessagesCache[ctx.channel.id] = { 'message': ctx.content, 'author': ctx.author.id }
+        
