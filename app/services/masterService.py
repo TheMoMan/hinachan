@@ -1,4 +1,3 @@
-import discord
 import os
 
 class MasterService():

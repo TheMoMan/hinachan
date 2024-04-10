@@ -1,5 +1,4 @@
 import discord
-import os
 import random
 from datetime import datetime, timedelta, timezone
 from discord.ext import commands
@@ -38,6 +37,11 @@ class TextService():
         print ('wysi called')
 
         return 'wysi'
+    
+    def getSteamMaintenanceAlert(self):
+        print('getSteamMaintenanceAlert called')
+
+        return "**:warning: It's Tuesday :warning: Steam Maintenance Starting Soon :warning:**"
 
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')

@@ -1,4 +1,3 @@
-import discord
 from app.embeds import helpEmbed
 from random import randint
 

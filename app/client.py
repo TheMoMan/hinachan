@@ -1,9 +1,6 @@
 import discord
 import os
-import random
-import app.utils
 from app.handlers import *
-from app.embeds import helpEmbed
 from discord.ext import commands
 
 prefix = os.environ['PREFIX']
@@ -34,6 +31,8 @@ async def on_ready():
     await client.add_cog(gameUtilHandler.GameUtilHandler(client))
     await client.add_cog(masterHandler.MasterHandler(client))
     await client.add_cog(utilHandler.UtilHandler(client))
+
+    loopHandler.LoopHandler(client).startLoops()
 
 with open(os.environ['SECRET'], 'r') as f:
     client.run(f.readline())

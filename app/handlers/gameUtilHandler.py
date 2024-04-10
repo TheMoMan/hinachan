@@ -1,4 +1,3 @@
-import discord
 import app.utils as utils
 from app.services import gameUtilService
 from discord.ext import commands

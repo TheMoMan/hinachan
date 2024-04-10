@@ -1,1 +1,1 @@
-__all__ = ['gameUtilService', 'imageService', 'masterHandler', 'textService', 'utilService']
+__all__ = ['dateTimeService', 'gameUtilService', 'imageService', 'masterHandler', 'textService', 'utilService']

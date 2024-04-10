@@ -1,4 +1,3 @@
-import discord
 from app.services import imageService
 from discord.ext import commands
 

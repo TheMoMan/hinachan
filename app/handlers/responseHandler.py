@@ -1,4 +1,3 @@
-import discord
 import re
 import os
 import json

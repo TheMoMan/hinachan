@@ -1,4 +1,3 @@
-import discord
 import os
 from app.services import masterService
 from discord.ext import commands
