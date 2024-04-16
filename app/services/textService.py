@@ -1,5 +1,7 @@
 import discord
 import random
+import json
+import os
 from datetime import datetime, timedelta, timezone
 from discord.ext import commands
 
@@ -72,5 +74,10 @@ class TextService():
             lastMessagesCache[ctx.channel.id] = { 'message': '', 'author': '' }
 
             return
+
+        badWords = json.loads(os.environ['BAD_WORDS'])
+        for word in badWords:
+            if word in messageText.lower:
+                return
 
         lastMessagesCache[ctx.channel.id] = { 'message': ctx.content, 'author': ctx.author.id }
