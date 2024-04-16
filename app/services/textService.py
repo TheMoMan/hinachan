@@ -64,12 +64,13 @@ class TextService():
 
         except:
             oldMessage = { 'message': '', 'author': '' }
+
+        messageText = oldMessage['message']
         
-        if oldMessage['message'] == ctx.content and oldMessage['author'] != ctx.author.id and not ctx.author.bot:
+        if bool(messageText) and messageText == ctx.content and oldMessage['author'] != ctx.author.id and not ctx.author.bot:
             await ctx.channel.send(ctx.content)
             lastMessagesCache[ctx.channel.id] = { 'message': '', 'author': '' }
 
             return
 
         lastMessagesCache[ctx.channel.id] = { 'message': ctx.content, 'author': ctx.author.id }
-        
