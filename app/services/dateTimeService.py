@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 class DateTimeService():
     @staticmethod
     def steamMaintenanceImminent():
-        # Check if the current date and time is Tuesday between 20 and 21 utc
+        # Check if the current date and time is Tuesday between 21 and 22 utc
 
         now = datetime.now(timezone.utc)
 
@@ -12,7 +12,7 @@ class DateTimeService():
             return False
 
         hour = now.hour
-        if hour != 20:
+        if hour != 21:
             return False
         
         return True
