@@ -41,7 +41,7 @@ class TextService():
     def getSteamMaintenanceAlert(self):
         print('getSteamMaintenanceAlert called')
 
-        return "**:warning: It's Tuesday :warning: Steam Maintenance Starting Soon :warning:**"
+        return "**:warning: It's Tuesday :warning: Steam Maintenance Starting Soon :warning:** https://steamstat.us/"
 
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
