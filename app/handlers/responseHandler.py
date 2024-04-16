@@ -95,6 +95,9 @@ class ResponseHandler():
                 if len(msg) == 0:
                     msg = 'I agree!'
 
-                await ctx.channel.send(msg)
-        
+                # Don't ping people
+                filteredMsg = re.sub('<@!*&*456>', '', msg)
+
+                await ctx.channel.send(filteredMsg)
+
         await self.textService.messageRepeater(ctx, self.lastMessagesCache)
