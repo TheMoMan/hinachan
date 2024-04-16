@@ -92,11 +92,13 @@ class ResponseHandler():
 
                     tries += 1
 
-                if len(msg) == 0:
-                    msg = 'I agree!'
-
                 # Don't ping people
-                filteredMsg = re.sub('<@!*&*456>', '', msg)
+                filteredMsg = re.sub('<@!*&*[0-9]+>', '', msg)
+
+                if len(filteredMsg) == 0:
+                    filteredMsg = '.'
+
+                print(filteredMsg)
 
                 await ctx.channel.send(filteredMsg)
 
