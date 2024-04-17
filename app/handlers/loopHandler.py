@@ -8,9 +8,17 @@ class LoopHandler():
         self.textService = textService.TextService()
         self.dateTimeService = dateTimeService.DateTimeService()
         self.client = client
+    
+    @tasks.loop(minutes=1)
+    async def syncToHour(self):
+        print('syncToHour: Checking minute')
+        if self.dateTimeService.withinMinutesPastHour(2):
+            self.steamMaintenanceLoop.start()
+            self.syncToHour.stop()
 
     @tasks.loop(hours=1)
     async def steamMaintenanceLoop(self):
+        print('Starting steamMaintenanceLoop')
         if not self.dateTimeService.steamMaintenanceImminent():
             return
 
@@ -28,4 +36,4 @@ class LoopHandler():
 
     def startLoops(self):
         print('Initialising loops')
-        self.steamMaintenanceLoop.start()
+        self.syncToHour.start()
