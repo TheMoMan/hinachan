@@ -77,7 +77,7 @@ class TextService():
 
         badWords = json.loads(os.environ['BAD_WORDS'])
         for word in badWords:
-            if word in messageText.lower:
+            if word in messageText.lower():
                 return
 
         lastMessagesCache[ctx.channel.id] = { 'message': ctx.content, 'author': ctx.author.id }
