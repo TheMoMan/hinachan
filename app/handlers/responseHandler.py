@@ -74,9 +74,15 @@ class ResponseHandler():
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
         badWords = json.loads(os.environ['BAD_WORDS'])
+        susWords = json.loads(os.environ['SUSPICIOUS_WORDS'])
 
         if ('hina' in content.lower() or os.environ['USER_ID'] in content.lower()) and 'china' not in content.lower():
             tries = 0
+
+            for word in susWords:
+                if word in content.lower():
+                    await ctx.channel.send('no')
+                    return
 
             async with ctx.channel.typing():
                 while tries < 5:
