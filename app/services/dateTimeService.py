@@ -27,5 +27,5 @@ class DateTimeService():
         if now.minute <= minutes:
             return True
 
-        return True
+        return False
 
