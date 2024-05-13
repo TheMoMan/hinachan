@@ -8,7 +8,7 @@ class LoopHandler():
         self.textService = textService.TextService()
         self.dateTimeService = dateTimeService.DateTimeService()
         self.client = client
-    
+
     @tasks.loop(minutes=1)
     async def syncToHour(self):
         print('syncToHour: Checking minute')
@@ -19,10 +19,11 @@ class LoopHandler():
     @tasks.loop(hours=1)
     async def steamMaintenanceLoop(self):
         print('Starting steamMaintenanceLoop')
-        if not self.dateTimeService.steamMaintenanceImminent():
-            return
+        status = self.dateTimeService.steamMaintenanceImminent()
 
-        message = self.textService.getSteamMaintenanceAlert()
+        if not status:
+            return
+        message = self.textService.getSteamMaintenanceImminentAlert() if status == 'imminent' else self.textService.getSteamMaintenanceSoonAlert()
 
         for channelId in json.loads(os.environ['STEAM_MAINTENANCE_CHANNELS']):
             channel = self.client.get_channel(channelId)

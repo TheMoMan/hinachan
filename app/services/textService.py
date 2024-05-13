@@ -39,11 +39,16 @@ class TextService():
         print ('wysi called')
 
         return 'wysi'
-    
-    def getSteamMaintenanceAlert(self):
+
+    def getSteamMaintenanceImminentAlert(self):
         print('getSteamMaintenanceAlert called')
 
-        return "**:warning: It's Tuesday :warning: Steam Maintenance Starting Soon :warning:** https://steamstat.us/"
+        return "**:warning: It's Tuesday :warning: Steam Maintenance imminent :warning:** https://steamstat.us/"
+
+    def getSteamMaintenanceSoonAlert(self):
+        print('getSteamMaintenanceAlert called')
+
+        return "**:warning: It's Tuesday** - Steam Maintenance starting in approx. **1 hour**"
 
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
@@ -59,7 +64,7 @@ class TextService():
 
         print('{} messages to choose from'.format(len(messages)))
         return random.choice(messages).content
-    
+
     async def messageRepeater(self, ctx: commands.Context, lastMessagesCache):
         try:
             oldMessage = lastMessagesCache[ctx.channel.id]
@@ -68,7 +73,7 @@ class TextService():
             oldMessage = { 'message': '', 'author': '' }
 
         messageText = oldMessage['message']
-        
+
         if bool(messageText) and messageText == ctx.content and oldMessage['author'] != ctx.author.id and not ctx.author.bot:
             await ctx.channel.send(ctx.content)
             lastMessagesCache[ctx.channel.id] = { 'message': '', 'author': '' }
