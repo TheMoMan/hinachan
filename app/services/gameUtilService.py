@@ -6,7 +6,7 @@ class GameUtilService():
 
         with open('lib/words.txt', 'r') as f:
             words = set(f.read().split())
-            
+
             validWords = [word for word in words if letters.lower() in word]
             validWords.sort(key=len)
 
@@ -35,7 +35,8 @@ class GameUtilService():
     def createOsuEditorLink(self, timestamps: list):
         print('createOsuEditorLink called')
 
-        formatted = ['<osu://edit/{}>'.format(timestamp, timestamp).replace(' ', '_') for timestamp in timestamps]
+        # Thanks Hivie!
+        formatted = ['[{}](https://axer-url.vercel.app/api/edit?time={})'.format(timestamp, timestamp.replace(' ', '-')) for timestamp in timestamps]
 
         embed = discord.Embed(colour=0xFA8681)
 
