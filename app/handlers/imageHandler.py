@@ -50,6 +50,6 @@ class ImageHandler(commands.Cog):
 
     @commands.command(aliases=['notwrong', 'nevermind'])
     async def speechless(self, ctx: commands.Context):
-        img = self.service.what()
+        img = self.service.speechless()
 
         await ctx.channel.send(file=img)

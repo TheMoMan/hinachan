@@ -40,7 +40,7 @@ class ImageService():
 
         return discord.File('lib/what.jpg')
 
-    def sppechless(self):
+    def speechless(self):
         print('speechless called')
 
         return discord.File('lib/speechless.jpg')
