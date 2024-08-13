@@ -10,7 +10,7 @@ class UtilService():
 
         elif category.lower() == 'images':
             return helpEmbed.getImages()
-        
+
         elif category.lower() == 'responses':
             return helpEmbed.getResponses()
 
@@ -21,7 +21,6 @@ class UtilService():
             return helpEmbed.getUtils()
 
         return helpEmbed.getMain()
-
 
     def getNineOneOne(self):
         print('getNineOneOne called')

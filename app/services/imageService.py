@@ -39,3 +39,8 @@ class ImageService():
         print('what called')
 
         return discord.File('lib/what.jpg')
+
+    def sppechless(self):
+        print('speechless called')
+
+        return discord.File('lib/speechless.jpg')

@@ -13,7 +13,7 @@ def getMain():
     HELP_EMBED = getBase()
     HELP_EMBED.title = ':page_facing_up: Hina-chan Commands'
     HELP_EMBED.description = 'You can also do `!help <category>` for slightly more detailed help.\ne.g. `!help images`'
-    
+
     images = ['fbi', 'finger', 'muppet', 'ohno', 'simon', 'thumbsup']
     HELP_EMBED.add_field(name=':frame_photo: Images', value=formatCommandsForMain(images))
 
@@ -32,12 +32,15 @@ def getImages():
     HELP_EMBED = getBase()
     HELP_EMBED.title = ':frame_photo: Hina-chan Image Commands'
     HELP_EMBED.description = 'Commands that return an image.'
-    
+
     HELP_EMBED.add_field(name='!fbi', value='Open up!')
     HELP_EMBED.add_field(name='!finger', value='Flip the bird.')
     HELP_EMBED.add_field(name='!muppet', value='You muppet!')
     HELP_EMBED.add_field(name='!ohno', value='Anyway...')
     HELP_EMBED.add_field(name='!thumbsup', value=':thumbsup:')
+    HELP_EMBED.add_field(name='!simon', value='He whomst shall...')
+    HELP_EMBED.add_field(name='!speechless', value='...')
+    HELP_EMBED.add_field(name='!what', value='what.')
 
     return HELP_EMBED
 
@@ -45,7 +48,7 @@ def getGameUtils():
     HELP_EMBED = getBase()
     HELP_EMBED.title = ':game_die: Hina-chan Game Utilities'
     HELP_EMBED.description = 'Commands that return an image.'
-    
+
     HELP_EMBED.add_field(name='!defuse <letters>', value='Solves a Bomb Party letter combination.\n`-v` Verbose mode.')
 
     return HELP_EMBED
