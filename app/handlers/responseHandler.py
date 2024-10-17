@@ -11,6 +11,9 @@ class ResponseHandler():
         self.textService = textService.TextService()
         self.gameUtilService = gameUtilService.GameUtilService()
         self.lastMessagesCache = {}
+        # TODO: Replace with regex
+        self.badWords = json.loads(os.environ['BAD_WORDS'])
+        self.susWords = json.loads(os.environ['SUSPICIOUS_WORDS'])
 
     # I look at this now and I hate it. TODO: Stop with the elifs
     async def handle(self, ctx: commands.Context):
@@ -73,13 +76,12 @@ class ResponseHandler():
 
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
-        badWords = json.loads(os.environ['BAD_WORDS'])
-        susWords = json.loads(os.environ['SUSPICIOUS_WORDS'])
+        doNotRepeat = False
 
         if ('hina' in content.lower() or os.environ['USER_ID'] in content.lower()) and 'china' not in content.lower():
             tries = 0
 
-            for word in susWords:
+            for word in self.susWords:
                 if word in content.lower():
                     await ctx.channel.send('no')
                     return
@@ -88,7 +90,7 @@ class ResponseHandler():
                 while tries < 5:
                     msg = await self.textService.getRandomMessage(ctx.channel)
 
-                    for word in badWords:
+                    for word in self.badWords:
                         if word in msg.lower():
                             msg = ''
                             break
@@ -108,4 +110,10 @@ class ResponseHandler():
 
                 await ctx.channel.send(filteredMsg)
 
-        await self.textService.messageRepeater(ctx, self.lastMessagesCache)
+        for word in self.badWords:
+            if word in content.lower():
+                doNotRepeat = True
+                break
+
+        if not doNotRepeat:
+            await self.textService.messageRepeater(ctx, self.lastMessagesCache)
