@@ -50,6 +50,11 @@ class TextService():
 
         return "**:warning: It's Tuesday** - Steam Maintenance starting in approx. **1 hour**"
 
+    def getOrb(self):
+        print('getOrb called')
+
+        return "Orb"
+
     async def getRandomMessage(self, channel: discord.TextChannel):
         print('getRandomMessage called')
 

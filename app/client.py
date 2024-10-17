@@ -11,9 +11,20 @@ response = responseHandler.ResponseHandler(client)
 
 @client.event
 async def on_message(message: discord.Message):
-    if message.author == client.user or message.author.bot:
+    # Ignore self
+    if message.author == client.user:
         return
-    
+
+    # Webhooks only
+    if message.webhook_id:
+        if await response.handleWebhooks(message):
+            return
+
+    # Ignore bots
+    if message.author.bot:
+        return
+
+    # Everyone else
     if await response.handle(message):
         return
 

@@ -74,6 +74,21 @@ class ResponseHandler():
 
         return False
 
+    async def handleWebhooks(self, ctx: commands.Context):
+        embeds = ctx.embeds
+
+        if not embeds or len(embeds) == 0:
+            return
+
+        embed = embeds[0]
+
+        if embed.thumbnail.url =='https://static.runelite.net/cache/item/icon/28334.png' or "awakener's orb" in embed.description.lower():
+            msg = self.textService.getOrb()
+
+            await ctx.channel.send(msg)
+
+            return True
+
     async def handleLast(self, ctx: commands.Context):
         content = ctx.content
         doNotRepeat = False
