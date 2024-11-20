@@ -4,6 +4,7 @@ class DateTimeService():
     @staticmethod
     def steamMaintenanceImminent():
         # Check if the current date and time is soon (Tuesday between 22 and 23 utc)
+        # Should probably make this an env var... maybe when I can be bothered to refactor
 
         now = datetime.now(timezone.utc)
 
@@ -12,10 +13,10 @@ class DateTimeService():
             return
 
         hour = now.hour
-        if hour == 22:
+        if hour == 23:
             return 'imminent'
 
-        if hour == 21:
+        if hour == 22:
             return 'soon'
 
         return
