@@ -1,10 +1,12 @@
+import os
 from datetime import datetime, timezone
 
 class DateTimeService():
     @staticmethod
     def steamMaintenanceImminent():
         # Check if the current date and time is soon (Tuesday between 22 and 23 utc)
-        # Should probably make this an env var... maybe when I can be bothered to refactor
+
+        maintenanceHour = os.environ['STEAM_MAINTENANCE_HOUR_UTC']
 
         now = datetime.now(timezone.utc)
 
@@ -13,10 +15,10 @@ class DateTimeService():
             return
 
         hour = now.hour
-        if hour == 23:
+        if hour == maintenanceHour:
             return 'imminent'
 
-        if hour == 22:
+        if hour == (maintenanceHour + 23) % 24:
             return 'soon'
 
         return
