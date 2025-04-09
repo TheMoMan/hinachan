@@ -6,7 +6,7 @@ class DateTimeService():
     def steamMaintenanceImminent():
         # Check if the current date and time is soon (Tuesday between 22 and 23 utc)
 
-        maintenanceHour = os.environ['STEAM_MAINTENANCE_HOUR_UTC']
+        maintenanceHour = int(os.environ['STEAM_MAINTENANCE_HOUR_UTC'])
 
         now = datetime.now(timezone.utc)
 
