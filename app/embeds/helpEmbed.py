@@ -35,6 +35,7 @@ def getImages():
 
     HELP_EMBED.add_field(name='!fbi', value='Open up!')
     HELP_EMBED.add_field(name='!finger', value='Flip the bird.')
+    HELP_EMBED.add_field(name='!fry', value='Hmm...')
     HELP_EMBED.add_field(name='!muppet', value='You muppet!')
     HELP_EMBED.add_field(name='!ohno', value='Anyway...')
     HELP_EMBED.add_field(name='!thumbsup', value=':thumbsup:')
