@@ -53,3 +53,9 @@ class ImageHandler(commands.Cog):
         img = self.service.speechless()
 
         await ctx.channel.send(file=img)
+
+    @commands.command(aliases=['hmm', 'suspicious'])
+    async def fry(self, ctx: commands.Context):
+        img = self.service.speechless()
+
+        await ctx.channel.send(file=img)

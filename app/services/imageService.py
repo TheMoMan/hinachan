@@ -44,3 +44,8 @@ class ImageService():
         print('speechless called')
 
         return discord.File('lib/speechless.jpg')
+
+    def fry(self):
+        print('fry called')
+
+        return discord.File('lib/fry.jpg')
