@@ -16,8 +16,6 @@ class DiceResults(TypedDict):
 def getRandomInteger(max: int=100):
     # print('getRandomInteger called')
 
-    print(f'rolling: {max}')
-
     return randint(1, max)
 
 def getRandomIntegerFromStr(max: str='100'):
