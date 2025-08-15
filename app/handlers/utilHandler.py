@@ -1,4 +1,4 @@
-from app.services import utilService
+from app.services import utilService, diceService
 from discord.ext import commands
 
 class UtilHandler(commands.Cog):
@@ -20,16 +20,18 @@ class UtilHandler(commands.Cog):
         await ctx.channel.send(content)
 
     @commands.command(aliases=['dice', 'rand'])
-    async def roll(self, ctx: commands.Context, max: str='100'):
-        try:
-            max = int(max)
-            if max < 1 or max > 2147483647:
-                max = 100
+    async def roll(self, ctx: commands.Context, roll: str='100'):
+        if diceService.isDiceFormat(roll):
+            try:
+                value = diceService.evaluateDiceFormat(roll)
+                await ctx.channel.send(embed=value)
+                return
 
-        except:
-            max = 100
-        
-        num = self.service.getRandomInteger(max)
+            except ValueError as error:
+                await ctx.channel.send(str(error))
+                return
+
+        num = diceService.getRandomIntegerFromStr(roll)
 
         await ctx.channel.send(':game_die: **{}** rolls **{}**'.format(ctx.author.display_name, num))
 
@@ -44,6 +46,6 @@ class UtilHandler(commands.Cog):
             option = self.service.chooseOptionFromString(options)
 
             await ctx.channel.send('{}!'.format(option))
-        
+
         except ValueError:
             await ctx.channel.send('Use pipe `|` to separate options.')

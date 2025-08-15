@@ -30,11 +30,6 @@ class UtilService():
 
         return content
 
-    def getRandomInteger(self, max: int=100):
-        print('getRandomInteger called')
-
-        return randint(1, max)
-
     def chooseOptionFromString(self, options: str):
         optionsArr = options.split('|')
         optionsLen = len(optionsArr)
