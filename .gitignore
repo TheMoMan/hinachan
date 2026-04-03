@@ -5,8 +5,9 @@
 prod.yml
 dev.yml
 *.secret
-*Config.py
 
+# Config files
+*Config.py
 lib/911.txt
 
 # Python generated files
