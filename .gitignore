@@ -7,6 +7,8 @@ dev.yml
 *.secret
 *Config.py
 
+lib/911.txt
+
 # Python generated files
 __pycache__
 
